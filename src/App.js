@@ -1,7 +1,7 @@
 import './App.css';
 import Homepage from './pages/Homepage'
 import UserProfilePage from './pages/UserProfilePage';
-import {Redirect, Route, useHistory} from 'react-router-dom'
+import {Redirect, Route} from 'react-router-dom'
 
 
 import { ToastContainer } from 'react-toastify';

@@ -39,11 +39,10 @@ const MyProfilePage=()=>{
 
     return(
         <div style={{padding:"10px"}}> 
-
             <LoadingSpinner loadStatus = {loadStatus} floatSet={true}/>
 
             <div style={{display:"flex", padding:"20px", marginTop:"2vh", backgroundColor:"#FFE5D9"}}>
-                <div style={{padding:"px"}} > {/*profile*/}
+                <div style={{padding:"px"}} > 
                     <img alt="User profile" src={profilePhoto} style={{width:"200px", borderRadius:"15px"}}/>
                     <p style={{textAlign:"center"}}>{username}</p>
                     <Button href="/upload" className="mx-auto" color="danger" style={{padding:"10px", display:"block"}}>Upload Photos</Button>

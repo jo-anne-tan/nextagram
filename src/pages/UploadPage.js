@@ -5,8 +5,8 @@ import LivePreview from '../containers/LivePreview';
 import { toast } from 'react-toastify';
 
 
-
 const UploadPage=()=>{
+    console.log("In Upload Page")
     const [loadStatus,setLoadStatus] = useState(null)
 
     const [imageFile, setImageFile] = useState(null)
@@ -14,8 +14,12 @@ const UploadPage=()=>{
     
     const [previewImage, setPreviewImage] = useState(null)
     const [message, setMessage] = useState("")
+
+    const preventRender = null
+
+    if (preventRender) setMessage("")   // to check if code breaks. adding this here as setMessage is never used.
     
-    setMessage("") // to check if code breaks. adding this here as setMessage is never used.
+    
 
     const fileUploadHandle=(e)=>{
         setPreviewImage(URL.createObjectURL(e.target.files[0]))
@@ -58,7 +62,7 @@ const UploadPage=()=>{
 
     return(
         <div style={{padding:"10px"}}>
-            <p className="h6">Upload your image below</p>
+            <p className="mt-1 h text-center">Upload your image below</p>
             <hr/>
             <div className="d-flex">
                 <LivePreview previewImage={previewImage} message={message} loadStatus={loadStatus}/>
@@ -81,7 +85,7 @@ const UploadPage=()=>{
                         </FormText>
 
                     </FormGroup>
-                    <Button type="submit" color="danger">
+                    <Button type="submit" color="danger" disabled={previewImage? false:true}>
                         Upload
                     </Button>
                 </Form>

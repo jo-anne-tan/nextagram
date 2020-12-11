@@ -8,14 +8,6 @@ const LivePreview=({previewImage,message,loadStatus})=>{
 
     return(
       <>
-        {loadStatus
-        ?<div style={{width:"100%", height:"100%", position:"absolute"}}>
-            <LoadingSpinner loadStatus = {loadStatus} floatSet={true}/>
-            <p className="text-center" style={{lineHeight:"35vh"}}>Uploading photo...</p>
-          </div>
-        : null
-        }
-
         {previewImage ? (
           <img
             alt="Upload preview"
@@ -31,6 +23,14 @@ const LivePreview=({previewImage,message,loadStatus})=>{
             {message ? message : "Live Preview"}
           </h3>
         )}
+        
+        {loadStatus
+        ?<div style={{width:"100%", height:"100%", position:"absolute"}}>
+            <LoadingSpinner loadStatus = {loadStatus} floatSet={true}/>
+            <p className="text-center" style={{lineHeight:"35vh"}}>Uploading photo...</p>
+          </div>
+        : null
+        }
       </>
     )
   }  
