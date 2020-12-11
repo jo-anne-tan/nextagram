@@ -73,7 +73,7 @@ const getInputPwConfirmProp = () => {
   if (!pwConfirm.length){
     return null
   }
-  if (pwConfirm != pw){
+  if (pwConfirm !== pw){
     return {invalid:true}
   } else return {valid:true}
 }
@@ -82,7 +82,7 @@ const getFormPwConfirmFeedback=()=>{
   if(!pwConfirm.length){
     return null
   }
-  if(pwConfirm != pw){
+  if(pwConfirm !== pw){
     return <FormFeedback invalid> Passwords do not match. Please check again.</FormFeedback>
   } else return <FormFeedback valid>Passwords match! You're good to go!</FormFeedback>
 }

@@ -6,7 +6,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify';
 
 
-const Example = ({toggleForm,toggle, loggedIn, setLoggedIn}) => {
+const LoginForm = ({toggleForm,toggle, loggedIn, setLoggedIn}) => {
 
     console.log("LoginModal.js -start - loggedIn: "+loggedIn)
 
@@ -85,5 +85,5 @@ const Example = ({toggleForm,toggle, loggedIn, setLoggedIn}) => {
     );
   }
   
-  export default Example;
+  export default LoginForm;
   

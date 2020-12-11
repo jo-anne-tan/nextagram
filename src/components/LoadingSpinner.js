@@ -22,7 +22,7 @@ const variants = {
 }
 
 export default function Loader({loadStatus, floatSet}) {
-    console.log(`In Loader. floatset: ${floatSet}`)
+    // console.log(`In Loader. floatset: ${floatSet}`)
 
     if (!loadStatus){
         return null

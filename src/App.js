@@ -1,26 +1,27 @@
 import './App.css';
 import Homepage from './pages/Homepage'
 import UserProfilePage from './pages/UserProfilePage';
-import {Redirect, Route, useHistory} from 'react-router-dom'
+import {Redirect, Route} from 'react-router-dom'
 
 
 import { ToastContainer } from 'react-toastify';
 
 // import {Link} from 'react-router-dom'
 
-import Navbar from './components/Navbar'
+import Navbar from './components/MyNavbar'
 import { useState } from 'react';
 import MyProfilePage from './pages/MyProfilePage';
 import UploadPage from './pages/UploadPage';
 
 function App() {
-  let history = useHistory()
+
   // loggedIn state
   const [loggedIn,setLoggedIn]=useState(
     localStorage.getItem("jwt") !== null
   )
 
-  console.log("App.js - loggedIn: "+loggedIn)
+  // console.log("App.js - loggedIn: "+loggedIn)
+
   return (
     <div>
       <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>

@@ -20,14 +20,14 @@ const Homepage =()=>{
     return(
         <>
             <div style={{margin:"20px", marginTop:"5vh" }} >
-                <LoadingSpinner loadStatus = {loadStatus}/>
+                <LoadingSpinner loadStatus = {loadStatus} floatSet={null}/>
                 <div>  {/* All User Profiles */}
                     {users.map((user)=>(
                         // For each individual profile:
                         // wrap in link related to user.id
                         <Link to={`/users/${user.id}`} key={user.id} style={{display:"flex",color:"black", textDecoration:"none", marginBottom:"10vh"}} > 
                                 <div>
-                                    <img src = {user.profileImage} style={{width:"200px", height:"200px", borderRadius:"15px"}}/>
+                                    <img alt="User Profile " src = {user.profileImage} style={{width:"200px", height:"200px", borderRadius:"15px"}}/>
                                     <p style={{textAlign:"center"}}> {user.username}</p>
                                 </div>
                                 <div style={{marginLeft: "20px"}}>

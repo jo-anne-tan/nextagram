@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal } from 'reactstrap';
 
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
@@ -45,7 +45,7 @@ let LoginModal=({loggedIn, setLoggedIn})=>{
         } else toggle()
     }
 
-    console.log("LoginModal.js - loggedIn: "+loggedIn)
+    // console.log("LoginModal.js - loggedIn: "+loggedIn)
 
     return(
         <div>

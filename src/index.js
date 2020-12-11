@@ -10,11 +10,15 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-toastify/dist/ReactToastify.min.css';
 
 ReactDOM.render(
-  <React.StrictMode>
+  // NOTE:
+  // Change <React.StrictMode> to <React.Fragment> due to dependency on react-transition-group by react-toastify
+  // so as to remove error message "Warning: Legacy context API has been detected within a strict-mode tree."
+
+  <React.Fragment>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.Fragment>,
   document.getElementById('root')
 );
 

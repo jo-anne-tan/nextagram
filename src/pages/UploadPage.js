@@ -14,6 +14,8 @@ const UploadPage=()=>{
     
     const [previewImage, setPreviewImage] = useState(null)
     const [message, setMessage] = useState("")
+    
+    setMessage("") // to check if code breaks. adding this here as setMessage is never used.
 
     const fileUploadHandle=(e)=>{
         setPreviewImage(URL.createObjectURL(e.target.files[0]))

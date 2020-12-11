@@ -27,7 +27,7 @@ const MyProfilePage=()=>{
                 console.error(err) 
             })
         }
-    },[])
+    }, [loggedIn]) // to check if code breaks. replaced [] with [loggedIn] state
 
     return(
         <div style={{padding:"10px"}}> 

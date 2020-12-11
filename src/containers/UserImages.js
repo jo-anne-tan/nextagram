@@ -19,10 +19,10 @@ const UserImages =({id})=>{
     return( 
         <div style={{display:"flex", flexWrap:"wrap", backgroundColor:"white", borderRadius:"5px"}}>
             {
-                images.map((image)=>{
+                images.map((image,index)=>{
                     return(
-                        <div style={{height:"25vw", width:"25vw", margin:"auto", padding:"5px"}}>
-                            <img src = {image.url} style={{margin:"auto",maxWidth:"100%", maxHeight:"100%",display:"block",borderRadius:"5px"}}></img>
+                        <div key={`${id}.${index}`} style={{height:"25vw", width:"25vw", margin:"auto", padding:"5px"}}>
+                            <img key={index} alt="user images" src = {image.url} style={{margin:"auto",maxWidth:"100%", maxHeight:"100%",display:"block",borderRadius:"5px"}}></img>
                         </div>
                     )
                 })

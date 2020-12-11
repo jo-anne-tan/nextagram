@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 import LoadingSpinner from '../components/LoadingSpinner'
 
 const LivePreview=({previewImage,message,loadStatus})=>{
@@ -18,6 +18,7 @@ const LivePreview=({previewImage,message,loadStatus})=>{
 
         {previewImage ? (
           <img
+            alt="Upload preview"
             className="mx-auto"
             src={previewImage}
             width="100%"
