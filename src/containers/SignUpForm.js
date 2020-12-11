@@ -5,7 +5,11 @@ import { ModalHeader, ModalBody } from 'reactstrap';
 import axios from'axios'
 import { toast } from 'react-toastify';
 
-const Example = ({toggleForm, toggle}) => {
+import {useHistory} from 'react-router-dom'
+
+const Example = ({toggleForm, toggle, setLoggedIn}) => {
+
+  const history = useHistory()
 
   // user input fields
   const [username, setUsername]=useState("")
@@ -167,10 +171,19 @@ const getFormPwConfirmFeedback=()=>{
       }
     })
     .then(response => {
-      console.log(response)
-      console.log(response.data)
 
-      toast.success(response.data.message, {
+      // Log user in
+      
+      localStorage.setItem('jwt', response.data.auth_token)
+      localStorage.setItem('id', response.data.user.id)
+      localStorage.setItem('username', response.data.user.username)
+      localStorage.setItem('profilePic', response.data.user.profile_picture)
+
+      setLoggedIn(true)
+      toggle()
+
+
+      toast.success(`Yay! Welcome aboard, ${localStorage.getItem("username")}!`, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -179,8 +192,8 @@ const getFormPwConfirmFeedback=()=>{
         draggable: true,
       });
 
-      toggle()
-
+      //Redirect user to their profile page
+      history.push("/profile")
     })
     .catch(error => {
       console.log(error)

@@ -4,7 +4,6 @@ import {useParams} from 'react-router-dom'
 import axios from 'axios'
 
 
-
 const UserProfilePage =()=>{
     let id = useParams().id
     const [username, updateUsername] = useState("")
@@ -16,7 +15,6 @@ const UserProfilePage =()=>{
             updatePhoto(res.data.profileImage)
             updateUsername(res.data.username)
         })
-
     },[id])
 
     return(

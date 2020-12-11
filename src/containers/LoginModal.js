@@ -45,16 +45,14 @@ let LoginModal=({loggedIn, setLoggedIn})=>{
         } else toggle()
     }
 
-    // console.log("LoginModal.js - loggedIn: "+loggedIn)
-
     return(
         <div>
             <Button color="light" onClick={handleBtnClick}>{handleBtnText()}</Button>
             <Modal isOpen={modal} toggle={toggle}>
                 {
                 !signUpFlag
-                ? <SignUpForm toggle={toggle} toggleForm={toggleForm}/> 
-                : <LoginForm toggle={toggle} toggleForm={toggleForm} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/> 
+                ? <SignUpForm toggle={toggle} toggleForm={toggleForm} setLoggedIn={setLoggedIn}/> 
+                : <LoginForm toggle={toggle} toggleForm={toggleForm} setLoggedIn={setLoggedIn}/> 
                 }
             </Modal>
         </div>

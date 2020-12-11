@@ -1,4 +1,3 @@
-// import {Link} from 'react-router-dom'
 import React, { useState } from 'react';
 import LoginModal from '../containers/LoginModal'
 import {
@@ -15,9 +14,6 @@ const MyNavbar = ({loggedIn, setLoggedIn}) => {
   const toggle = () => setIsOpen(!isOpen);
 
   // console.log("Navbar.js - loggedIn: "+loggedIn)
-
-  
-
 
   return (
     <div>
@@ -36,7 +32,6 @@ const MyNavbar = ({loggedIn, setLoggedIn}) => {
             )
           : null
           }
-              
           <LoginModal loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         </Collapse>
       </Navbar>

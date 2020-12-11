@@ -5,26 +5,20 @@ import { ModalHeader, ModalBody } from 'reactstrap';
 import axios from 'axios'
 import { toast } from 'react-toastify';
 
+import {useHistory} from 'react-router-dom'
 
-const LoginForm = ({toggleForm,toggle, loggedIn, setLoggedIn}) => {
 
-    console.log("LoginModal.js -start - loggedIn: "+loggedIn)
+const LoginForm = ({toggleForm,toggle, setLoggedIn}) => {
+
+  const history = useHistory()
+
 
     const [username, setUsername]=useState("")
     const [pw,setPw] = useState("")
 
-    const handleUsername=(e)=>{      
-    setUsername(e.target.value)
-    console.log(e.target.value)
-    }
-
-    const handlePw=e=>{
-    setPw(e.target.value)
-    console.log(e.target.value)
-    }
-
-    const handleSubmit = (e) =>{
-      console.log("LoginModal.js - handlesubmit function - loggedIn: "+loggedIn)
+    const handleUsername = e => setUsername(e.target.value)
+    const handlePw = e => setPw(e.target.value)
+    const handleSubmit = e =>{
       e.preventDefault()
 
       axios({
@@ -52,9 +46,12 @@ const LoginForm = ({toggleForm,toggle, loggedIn, setLoggedIn}) => {
           pauseOnHover: true,
           draggable: true,
         });
+
+        //Redirect user to their profile page
+        history.push("/profile")
       })
       .catch(err=>{
-        console.log(err)
+        console.error(err)
       })
     }
 
