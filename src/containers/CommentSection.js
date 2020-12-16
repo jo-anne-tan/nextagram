@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react'
 import {Form, Input, ListGroup, ListGroupItem} from 'reactstrap'
 import axios from 'axios'
 
+import LoadingSpinner from '../components/LoadingSpinner'
+
+
 const CommentSection =({ imageID, jwt})=>{
 
     const [input,setInput] = useState("")
     const [comment,setComment] = useState(null)
     const [commentList,updateCommentList]=useState([])
+    const [loadStatus,setLoadStatus] = useState(true)
+
 
     const handleChange=(e)=>{
         setInput(e.target.value)
@@ -21,6 +26,8 @@ const CommentSection =({ imageID, jwt})=>{
     // Submit comment
     useEffect(()=>{
         if(comment){
+            setLoadStatus(true)
+
             console.log("Triggering axios POST for image comment...")
             axios
             .post(`https://insta.nextacademy.com/api/v1/images/${imageID}/comments`, comment,
@@ -31,6 +38,7 @@ const CommentSection =({ imageID, jwt})=>{
             .then( res=>{
                 console.log(res)
                 setComment(null)
+
              })
             .catch( err=>console.error(err))
         }       
@@ -45,9 +53,11 @@ const CommentSection =({ imageID, jwt})=>{
         .then(res=>{
             console.log(res)
             updateCommentList(res.data)
+            setLoadStatus(false)
+
         })
         .catch(err=>{
-            console.err(err)
+            console.error(err)
         })
     },[comment, jwt, imageID])
     
@@ -69,6 +79,8 @@ const CommentSection =({ imageID, jwt})=>{
 
             {/* Comments section */}
             <ListGroup style={{ listStyle:"none", padding:"0"}}>
+            <LoadingSpinner loadStatus = {loadStatus} floatSet={null} />
+
                 <small>{commentList.length} comments</small>
                 {
                     commentList.map(comment=>{

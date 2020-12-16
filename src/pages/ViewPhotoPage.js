@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Button } from 'reactstrap'
 
 import CommentSection from '../containers/CommentSection'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 
 const ViewPhotoPage=()=>{
@@ -12,6 +13,8 @@ const ViewPhotoPage=()=>{
 
     const [img, setImg]=useState("")
     const [likeCount, updateLikeCount] = useState([])
+    const [loadStatus,setLoadStatus] = useState(true)
+
 
     // 
     const [like, setLike] = useState(false)
@@ -32,6 +35,7 @@ const ViewPhotoPage=()=>{
             setImg(res.data.url)
             setLike(res.data.liked)
             updateLikeCount(res.data.likes)
+            setLoadStatus(false)
         })
         .catch(err=>{
             console.log("axios GET request for image failed.")
@@ -72,6 +76,7 @@ const ViewPhotoPage=()=>{
 
     return(
         <div className="d-flex mx-3 row">
+            <LoadingSpinner loadStatus = {loadStatus} floatSet={null} />
             <div className="col d-flex flex-column align-items-center mr-3 mt-3">
                 {/* User image */}
                 <img alt={img} src={img} style={{width:"50vw"}}/>
