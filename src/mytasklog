@@ -1,0 +1,41 @@
+To-Do:
+
+[x] homepage -  link to profile page only when clicking on profile picture & username
+
+[x] create a ViewPhotoPage.js
+    [x] clicking on photo will link to  ViewPhotoPage.js
+        [x] Create page
+        [x] Add <Route> at App.js
+        [x] Update UserImages.js:
+            [x] Add link to ViewPhotoPage.js
+            [x] Pass image id to ViewPhotoPage.js
+            [x] Add animation on photos on hover
+
+    [x] ViewPhotoPage.js components: 
+        [x] photo 
+            [x] axios GET
+            [x] display image
+
+        [x] like feature
+            [x] Like button
+            [x] Like state toggle
+                [x] axios POST to toggle like 
+                [ ] Nice to have: heart icon instead of button
+                [x] Get the like status to stay even after page refresh
+                    [x] retrieve liked property from getimage axios
+                    
+            [x] axios POST to submit like to add to like count
+
+        [x] like count
+            [x] axios GET
+
+        [x] comment input <Form> and <Input>
+            [x] axios POST
+            [x] implement in page
+            [x]] comment section to update upon submit
+
+        [x] comment section
+            [x] axios GET
+            
+
+    

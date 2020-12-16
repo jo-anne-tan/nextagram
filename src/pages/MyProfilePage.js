@@ -10,12 +10,14 @@ const MyProfilePage=()=>{
     const loggedIn = (localStorage.getItem("jwt") !== null)
     const [loadStatus,setLoadStatus] = useState(true)
     const id = localStorage.getItem("id")
+    const jwt = localStorage.getItem("jwt")
+    console.log(`MyProfilePage jwt: ${jwt}`)
+
     const profilePhoto = localStorage.getItem("profilePic")
     const username = localStorage.getItem("username")
     
     useEffect(()=>{
         if (loggedIn){
-            let jwt = localStorage.getItem("jwt")
             console.log("Initiating axios call")
             axios.get('https://insta.nextacademy.com/api/v1/images/me',
             {
@@ -34,14 +36,11 @@ const MyProfilePage=()=>{
     }, [loggedIn]) // to check if code breaks. replaced [] with [loggedIn] state
 
 
-
-
-
     return(
         <div style={{padding:"10px"}}> 
             <LoadingSpinner loadStatus = {loadStatus} floatSet={true}/>
 
-            <div style={{display:"flex", padding:"20px", marginTop:"2vh", backgroundColor:"#FFE5D9"}}>
+            <div style={{display:"flex", padding:"20px", marginTop:"2vh"}}>
                 <div style={{padding:"px"}} > 
                     <img alt="User profile" src={profilePhoto} style={{width:"200px", borderRadius:"15px"}}/>
                     <p style={{textAlign:"center"}}>{username}</p>
@@ -49,7 +48,7 @@ const MyProfilePage=()=>{
 
                 </div>
                 <div style= {{marginLeft: "20px"}}>
-                    <UserImages id={id}/>    
+                    <UserImages id={id} jwt={jwt}/>    
                 </div>
             </div>
 

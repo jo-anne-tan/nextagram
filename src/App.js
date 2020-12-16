@@ -12,6 +12,7 @@ import Navbar from './components/MyNavbar'
 import { useState } from 'react';
 import MyProfilePage from './pages/MyProfilePage';
 import UploadPage from './pages/UploadPage';
+import ViewPhotoPage from './pages/ViewPhotoPage';
 
 function App() {
 
@@ -27,17 +28,16 @@ function App() {
 
       <Route exact path = "/" component ={Homepage}/>
       <Route path = "/users/:id" component = {UserProfilePage} />
+
       <Route exact path="/profile">
         {!loggedIn? <Redirect to ="/" /> : <MyProfilePage />}
       </Route>  
+
       <Route path="/upload">
         {!loggedIn? <Redirect to ="/" /> : <UploadPage />}        
       </Route>
 
-
-      {/* TO DO (Done) - Figure out a way to pass loggedIn state as a prop to MyProfilePage */}
-      {/* Recall that we shouldn't pass props through routes. */}
-      {/* These props or axios calls should be reiniated within these pages */}
+      <Route path ="/viewphoto/:imageID" component = {ViewPhotoPage} />
 
       <ToastContainer />
 

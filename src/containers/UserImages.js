@@ -1,41 +1,38 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
+// import Comment from './Comment'
 //https://insta.nextacademy.com/api/v2/images/<id>
 
-const UserImages =({id})=>{
-    const [images, updateImg] = useState([])
+const UserImages =({id, jwt})=>{
 
+    const [images, updateImg] = useState([])
+    // const [commentStatus, setCommentStatus]= useState(false)
 
     useEffect(()=>{
         axios.get(`https://insta.nextacademy.com/api/v2/images?userId=${id}`)
         .then((result)=>{
-            // console.log(result)
             updateImg(result.data)
         })
         .catch(error => console.log(error))
     },[id])
     
-    // console.log(id)
+
     return( 
         <div style={{display:"flex", flexWrap:"wrap", backgroundColor:"white", borderRadius:"5px"}}>
             {
                 images.map((image,index)=>{
                     return(
-                        <div key={`${id}.${index}`} style={{height:"25vw", width:"25vw", margin:"auto", padding:"5px"}}>
-                            <img key={index} alt="user images" src = {image.url} style={{margin:"auto",maxWidth:"100%", maxHeight:"100%",display:"block",borderRadius:"5px"}}></img>
-                        </div>
+                        <Link key={`link-${id}.${index}`} to={`/viewphoto/${image.id}`} >
+                            <div className="images" style={{ width:"25vw", margin:"5px", padding:"5px", borderRadius:"5px"}}>
+                                <img key={image.id} alt={image.url} src = {image.url} style={{margin:"auto",maxWidth:"100%", maxHeight:"100%",display:"block",borderRadius:"5px"}}></img>
+                                {/* <Comment imageID={image.id} jwt={jwt}/> */}
+                            </div>
+                        </Link>
                     )
                 })
             }
-            {/* {console.log(id)}
-            {images.map((image)=>(
-                <img src = {image.url}></img>
-
-            )}
-            {console.log("--")} */}
-
-        </div>
-        
+        </div>        
     )
 }
 
