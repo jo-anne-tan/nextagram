@@ -7,7 +7,6 @@ const CommentSection =({ imageID, jwt})=>{
     const [input,setInput] = useState("")
     const [comment,setComment] = useState(null)
     const [commentList,updateCommentList]=useState([])
-    const [userIDList, setUserIDList] = useState([])
 
     const handleChange=(e)=>{
         setInput(e.target.value)
@@ -31,11 +30,11 @@ const CommentSection =({ imageID, jwt})=>{
             }})
             .then( res=>{
                 console.log(res)
-                setComment({})
+                setComment(null)
              })
             .catch( err=>console.error(err))
         }       
-    },[comment])
+    },[comment, jwt, imageID])
 
     // Retrieve comments list
     useEffect(()=>{
@@ -50,7 +49,7 @@ const CommentSection =({ imageID, jwt})=>{
         .catch(err=>{
             console.err(err)
         })
-    },[comment])
+    },[comment, jwt, imageID])
     
 
     //Retrieve username 
@@ -74,10 +73,10 @@ const CommentSection =({ imageID, jwt})=>{
                 {
                     commentList.map(comment=>{
                         return(
-                            <ListGroupItem className="px-3 py-2" style={{border: "1px solid gold", borderRadius:"5px"}}>
+                            <ListGroupItem key={comment.id} className="px-3 py-2" style={{border: "1px solid gold", borderRadius:"5px"}}>
                                 <div className="d-flex ">
                                     <div>
-                                        <img src ={comment.posted_by.profileImage}  style={{width:"50px"}}/>
+                                        <img alt={comment.posted_by.profileImage} src ={comment.posted_by.profileImage}  style={{width:"50px"}}/>
                                         <p  style={{fontSize:"12px"}}>{comment.posted_by.id}</p>
                                     </div>
                                     <p className="mx-3">{comment.content}</p>

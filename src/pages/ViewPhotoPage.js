@@ -37,7 +37,7 @@ const ViewPhotoPage=()=>{
             console.log("axios GET request for image failed.")
             console.error(err)
         })
-    },[like])
+    },[like, imageID, jwt])
 
     const toggleLike=()=>{
 
@@ -74,7 +74,7 @@ const ViewPhotoPage=()=>{
         <div className="d-flex mx-3 row">
             <div className="col d-flex flex-column align-items-center mr-3 mt-3">
                 {/* User image */}
-                <img src={img} style={{width:"50vw"}}/>
+                <img alt={img} src={img} style={{width:"50vw"}}/>
 
                 <div className="d-flex justify-content-between my-2" style={{width:"100%"}}>
                     {/* Toggle like button */}
